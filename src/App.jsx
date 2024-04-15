@@ -1,12 +1,15 @@
 import './App.css'
-import ExampleV2 from './components/Form'
+import { Outlet } from 'react-router-dom'
+import ConfirmUser from './components/ConfirmUser'
+
+
 
 function App() {
 
   return (
     <>
-      <ExampleV2 />
-
+      <Outlet />
+      {/* <ConfirmUser /> */}
     </>
   )
 }
