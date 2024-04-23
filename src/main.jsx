@@ -4,12 +4,13 @@ import App from './App.jsx'
 import './index.css'
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
 
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Home from './components/Home.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import Login_form from './components/Login_form.jsx';
-import Registration_Form from './components/Regstration_Form.jsx';
+import Registration_Form from './components/Registration_Form.jsx';
 import ConfirmUser from './components/ConfirmUser.jsx';
 
 
@@ -41,8 +42,10 @@ import ConfirmUser from './components/ConfirmUser.jsx';
     }
   ])
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>    
+        <RouterProvider router={router}>
+          <App />
+        </RouterProvider>
+    </React.StrictMode>,
+  );
