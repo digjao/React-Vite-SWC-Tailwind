@@ -10,7 +10,9 @@ import { setFormData, setError, setSuccess } from '../features/userSlice';
 const Registration_Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const formData = useSelector((state) => state.registration.formData);  const error = useSelector((state) => state.registration.error);  const success = useSelector((state) => state.registration.success);
+  const formData = useSelector((state) => state.registration.formData);  
+  const error = useSelector((state) => state.registration.error);  
+  const success = useSelector((state) => state.registration.success);
 
 
   const handleChange = (e) => {
