@@ -2,29 +2,19 @@ import React, { useState } from 'react';
 import { registration } from '../services/auth';
 import RANDON_LANDSCAPE from '../assets/randon_landscape.jpg'
 import { useNavigate } from "react-router-dom"
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setFormData, setError, setSuccess } from '../features/userSlice';
 
 
 
 const Registration_Form = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate()
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone:'',
-    document:'',
-    password: ''
-  });
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+  const formData = useSelector((state) => state.registration.formData);  const error = useSelector((state) => state.registration.error);  const success = useSelector((state) => state.registration.success);
+
 
   const handleChange = (e) => {
-
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-      
-    });
+    dispatch(setFormData({ ...formData, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
@@ -38,10 +28,10 @@ const Registration_Form = () => {
       // console.log(Object.keys(response)); 
       console.log(response);
 
-      setSuccess(true);
+      dispatch(setSuccess(true));
       navigate("/confirmuser", { state: { email: formData.email, username: response.data.username }})
     } catch (error) {
-      setError(error.response.data.message);
+      dispatch(setError(error.response.data.message));
       
     }
   };
